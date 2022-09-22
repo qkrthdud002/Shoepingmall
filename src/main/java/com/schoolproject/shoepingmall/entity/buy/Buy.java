@@ -1,5 +1,6 @@
 package com.schoolproject.shoepingmall.entity.buy;
 
+import com.schoolproject.shoepingmall.entity.board.Board;
 import com.schoolproject.shoepingmall.entity.item.Item;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,5 +22,9 @@ public class Buy {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "item_id")
     private Item item;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "board_id")
+    private Board board;
 
 }

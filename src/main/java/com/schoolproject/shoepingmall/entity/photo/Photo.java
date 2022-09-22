@@ -1,11 +1,9 @@
 package com.schoolproject.shoepingmall.entity.photo;
 
+import com.schoolproject.shoepingmall.entity.board.Board;
 import lombok.Getter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Getter
@@ -20,6 +18,8 @@ public class Photo {
 
     private Long fileSize;
 
-    private Long board_id;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "board_id")
+    private Board board;
 
 }
