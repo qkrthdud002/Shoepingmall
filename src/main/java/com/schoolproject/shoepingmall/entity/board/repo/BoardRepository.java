@@ -1,4 +1,4 @@
-package com.schoolproject.shoepingmall.repository;
+package com.schoolproject.shoepingmall.entity.board.repo;
 
 import com.schoolproject.shoepingmall.entity.board.Board;
 import org.springframework.data.jpa.repository.JpaRepository;

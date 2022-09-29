@@ -1,4 +1,4 @@
-package com.schoolproject.shoepingmall.repository;
+package com.schoolproject.shoepingmall.entity.photo.repo;
 
 import com.schoolproject.shoepingmall.entity.photo.Photo;
 import org.springframework.data.jpa.repository.JpaRepository;
