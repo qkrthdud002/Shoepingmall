@@ -1,6 +1,7 @@
-package com.schoolproject.shoepingmall.entity.user;
+package com.schoolproject.shoepingmall.user;
 
-import com.schoolproject.shoepingmall.entity.board.Board;
+import com.schoolproject.shoepingmall.authority.Authority;
+import com.schoolproject.shoepingmall.board.Board;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,6 +9,7 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -25,7 +27,13 @@ public class User {
     @Column(length = 25, nullable = false)
     private String password;
 
-    private String role;
+    @ManyToMany
+    @JoinTable(
+            name = "user_authority",
+            joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "user_id")},
+            inverseJoinColumns = {@JoinColumn(name = "authority_name", referencedColumnName = "authority_name")}
+    )
+    private Set<Authority> authorities;
 
     @OneToMany(mappedBy = "user")
     private List<Board> boardList = new ArrayList<>();
@@ -34,7 +42,14 @@ public class User {
     public User(String username, String password) {
         this.username = username;
         this.password = password;
-        this.role = "ROLE_USER";
+    }
+
+    public void modify(String username, String password) {
+        this.username = username;
+        this.password = password;
     }
 
 }
+
+
+
