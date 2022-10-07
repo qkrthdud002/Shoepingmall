@@ -1,6 +1,6 @@
-package com.schoolproject.shoepingmall.entity.photo;
+package com.schoolproject.shoepingmall.photo;
 
-import com.schoolproject.shoepingmall.entity.board.Board;
+import com.schoolproject.shoepingmall.board.Board;
 import lombok.Getter;
 
 import javax.persistence.*;

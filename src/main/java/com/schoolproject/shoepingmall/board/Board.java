@@ -1,6 +1,6 @@
-package com.schoolproject.shoepingmall.entity.board;
+package com.schoolproject.shoepingmall.board;
 
-import com.schoolproject.shoepingmall.entity.user.User;
+import com.schoolproject.shoepingmall.user.User;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 

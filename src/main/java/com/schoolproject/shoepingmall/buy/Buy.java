@@ -1,7 +1,7 @@
-package com.schoolproject.shoepingmall.entity.buy;
+package com.schoolproject.shoepingmall.buy;
 
-import com.schoolproject.shoepingmall.entity.board.Board;
-import com.schoolproject.shoepingmall.entity.item.Item;
+import com.schoolproject.shoepingmall.board.Board;
+import com.schoolproject.shoepingmall.item.Item;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
