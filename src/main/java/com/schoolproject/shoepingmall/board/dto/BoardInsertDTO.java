@@ -11,9 +11,6 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 public class BoardInsertDTO {
 
-    @NotNull
-    private Long id;
-
     @NotBlank
     private String prizeName;
 
@@ -24,8 +21,7 @@ public class BoardInsertDTO {
     private Long userId;
 
     @Builder
-    public BoardInsertDTO(Long id, String prizeName, String content, Long userId) {
-        this.id = id;
+    public BoardInsertDTO(String prizeName, String content, Long userId) {
         this.prizeName = prizeName;
         this.content = content;
         this.userId = userId;
