@@ -11,16 +11,30 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 
 @RestController
+//@Controller
 @RequestMapping("/user")
 @RequiredArgsConstructor
 public class UserController {
 
     private final UserService userService;
 
-    /*@PostMapping("/login")
-    public String login() {
+//    @GetMapping("/login")
+//    public String login() {
+//
+//        return "/login";
+//    }
 
-    }*/
+//    @PostMapping("/login")
+//    public String login() {
+//
+//
+//    }
+
+//    @GetMapping("/register")
+//    public String register() {
+//
+//        return "/register";
+//    }
 
     @PostMapping("/register")
     public ResponseEntity register(@RequestBody @Valid UserInsertDTO userInsertDTO) {
