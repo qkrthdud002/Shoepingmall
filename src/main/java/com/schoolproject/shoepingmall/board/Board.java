@@ -1,11 +1,14 @@
 package com.schoolproject.shoepingmall.board;
 
+import com.schoolproject.shoepingmall.item.Item;
 import com.schoolproject.shoepingmall.user.User;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @NoArgsConstructor
@@ -27,6 +30,9 @@ public class Board {
     @JoinColumn(name = "user_id")
     private User user;
 
+    @OneToMany(mappedBy = "board")
+    private List<Item> items = new ArrayList<>();
+
     @Builder
     public Board(String prizeName, String content, User user) {
         this.prizeName = prizeName;
@@ -40,5 +46,7 @@ public class Board {
         this.prizeName = prizeName;
         this.content = content;
     }
+
+//    public void add()
 
 }

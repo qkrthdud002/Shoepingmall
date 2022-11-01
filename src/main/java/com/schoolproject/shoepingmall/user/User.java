@@ -2,6 +2,7 @@ package com.schoolproject.shoepingmall.user;
 
 import com.schoolproject.shoepingmall.authority.Authority;
 import com.schoolproject.shoepingmall.board.Board;
+import com.schoolproject.shoepingmall.buy.Buy;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -37,6 +38,9 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     private List<Board> boardList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "user")
+    private List<Buy> buy;
 
     @Builder
     public User(String username, String password) {
