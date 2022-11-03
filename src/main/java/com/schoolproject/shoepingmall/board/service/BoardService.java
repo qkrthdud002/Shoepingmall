@@ -12,5 +12,5 @@ public interface BoardService {
     public Board update(BoardUpdateDTO boardUpdateDTO);
     public Long delete(BoardDeleteDTO boardDeleteDTO);
     public List<BoardListDTO> getList(String search);
-    public BoardViewDTO view(BoardViewDTO boardViewDTO);
+    public BoardViewDTO view(Long id);
 }
