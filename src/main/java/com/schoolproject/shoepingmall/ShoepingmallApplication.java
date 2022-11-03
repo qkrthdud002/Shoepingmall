@@ -5,6 +5,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.web.config.PageableHandlerMethodArgumentResolverCustomizer;
 
+/**
+ * buy를 할 때 돈을 count만큼 곱해서 계산하는거
+ */
 @SpringBootApplication
 public class ShoepingmallApplication {
 
