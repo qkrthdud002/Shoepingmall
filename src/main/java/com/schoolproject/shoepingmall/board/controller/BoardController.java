@@ -1,10 +1,7 @@
 package com.schoolproject.shoepingmall.board.controller;
 
 import com.schoolproject.shoepingmall.board.Board;
-import com.schoolproject.shoepingmall.board.dto.BoardDeleteDTO;
-import com.schoolproject.shoepingmall.board.dto.BoardInsertDTO;
-import com.schoolproject.shoepingmall.board.dto.BoardResponseDTO;
-import com.schoolproject.shoepingmall.board.dto.BoardUpdateDTO;
+import com.schoolproject.shoepingmall.board.dto.*;
 import com.schoolproject.shoepingmall.board.service.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -20,13 +17,15 @@ public class BoardController {
 
     private final BoardService boardService;
 
-//    @GetMapping("/write")
-//    public String write() {
-//
-//        return "/write";
-//    }
+    @GetMapping("/view/{id}")
+    public ResponseEntity<BoardViewDTO> view(@PathVariable("id")Long id) {
 
-    @PostMapping("/wirtie")
+        BoardViewDTO boardViewDTO = boardService.view(id);
+
+        return ResponseEntity.ok().body(boardViewDTO);
+    }
+
+    @PostMapping("/write")
     public ResponseEntity<BoardResponseDTO> write(@RequestBody @Valid BoardInsertDTO boardInsertDTO) {
         Board board = boardService.insert(boardInsertDTO);
 
