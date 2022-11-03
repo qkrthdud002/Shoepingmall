@@ -1,19 +1,20 @@
 package com.schoolproject.shoepingmall.board.service;
 
 import com.schoolproject.shoepingmall.board.Board;
-import com.schoolproject.shoepingmall.board.dto.BoardDeleteDTO;
-import com.schoolproject.shoepingmall.board.dto.BoardInsertDTO;
-import com.schoolproject.shoepingmall.board.dto.BoardUpdateDTO;
+import com.schoolproject.shoepingmall.board.dto.*;
 import com.schoolproject.shoepingmall.board.repo.BoardRepository;
 import com.schoolproject.shoepingmall.exception.NotSameIdException;
 import com.schoolproject.shoepingmall.exception.WrongIdException;
+import com.schoolproject.shoepingmall.item.service.ItemService;
 import com.schoolproject.shoepingmall.user.User;
 import com.schoolproject.shoepingmall.user.repo.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -27,6 +28,8 @@ public class BoardServiceImpl implements BoardService{
     private final BoardRepository boardRepository;
 
     private final UserRepository userRepository;
+
+    private final ItemService itemService;
 
 //    @Autowired
 //    public void setUserRepository(UserRepository userRepository) {
@@ -72,11 +75,53 @@ public class BoardServiceImpl implements BoardService{
     }
 
     @Override
-    public void delete(BoardDeleteDTO boardDeleteDTO) {
+    public Long delete(BoardDeleteDTO boardDeleteDTO) {
 
         Board board = boardRepository.findById(boardDeleteDTO.getId()).orElseThrow(() -> new WrongIdException("board", boardDeleteDTO.getId()));
 
         boardRepository.delete(board);
 
+        return board.getId();
+
+    }
+
+    @Override
+    public List<BoardListDTO> getList(String search) {
+        List<Board> list = boardRepository.findByPrizeNameContaining(search);
+        List<BoardListDTO> result = new ArrayList<>();
+
+        list.forEach(board -> {
+            BoardListDTO boardListDTO = BoardListDTO.builder()
+                    .id(board.getId())
+                    .prizeName(board.getPrizeName())
+                    .price(board.getItems().get(0).getPrice()) // item에서 첫번째 값의 가격을 가져온다.
+                    .build();
+
+            result.add(boardListDTO);
+        });
+
+        return result;
+    }
+
+    @Override
+    public BoardViewDTO view(Long id) {
+
+        Board board = boardRepository.findById(id).orElseThrow(() -> new WrongIdException("board", id));
+
+        List<Integer> sizes = new ArrayList<>();
+
+        board.getItems()
+                .forEach(item -> {
+                    sizes.add(item.getSize());
+                });
+
+        BoardViewDTO boardViewDTO = BoardViewDTO.builder()
+                .id(board.getId())
+                .prizeName(board.getPrizeName())
+                .price(board.getItems().get(0).getPrice())
+                .sizes(sizes)
+                .build();
+
+        return boardViewDTO;
     }
 }

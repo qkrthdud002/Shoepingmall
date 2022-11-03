@@ -27,7 +27,6 @@ public class ItemServiceImpl implements ItemService{
                 .name(itemInsertDTO.getName())
                 .price(itemInsertDTO.getPrice())
                 .size(itemInsertDTO.getSize())
-                .quantity(itemInsertDTO.getQuantity())
                 .build();
 
         return itemRepository.save(item);
