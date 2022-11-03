@@ -1,6 +1,5 @@
 package com.schoolproject.shoepingmall.buy;
 
-import com.schoolproject.shoepingmall.buy.dto.BuyUpdateDTO;
 import com.schoolproject.shoepingmall.item.Item;
 import com.schoolproject.shoepingmall.user.User;
 import lombok.AllArgsConstructor;
@@ -32,10 +31,5 @@ public class Buy {
 
     public Buy() {
 
-    }
-
-    public void modify(BuyUpdateDTO buyUpdateDTO) {
-        this.count = count;
-        this.price = price;
     }
 }

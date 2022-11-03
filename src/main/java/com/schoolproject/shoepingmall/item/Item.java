@@ -31,8 +31,6 @@ public class Item {
 
     private int size;
 
-    private int quantity;
-
     @OneToMany(mappedBy = "item")
     private List<Buy> buyList = new ArrayList<>();
 
@@ -48,6 +46,5 @@ public class Item {
         this.name = itemUpdateDTO.getName();
         this.price = itemUpdateDTO.getPrice();
         this.size = itemUpdateDTO.getSize();
-        this.quantity = itemUpdateDTO.getQuantity();
     }
 }
