@@ -10,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -25,12 +26,14 @@ class ItemServiceImplTest {
     private ItemService itemService;
 
     @Test
+    @Rollback(false)
     void 등록() {
         ItemInsertDTO itemInsertDTO = ItemInsertDTO.builder()
                 .name("aaaa")
                 .price(1234)
                 .size(123)
                 .quantity(2)
+                .boardId(1L)
                 .build();
 
         Item item = itemService.insert(itemInsertDTO);
