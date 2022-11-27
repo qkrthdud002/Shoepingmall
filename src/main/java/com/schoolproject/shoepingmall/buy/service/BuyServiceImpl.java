@@ -4,6 +4,7 @@ import com.schoolproject.shoepingmall.buy.Buy;
 import com.schoolproject.shoepingmall.buy.dto.BuyDeleteDTO;
 import com.schoolproject.shoepingmall.buy.dto.BuyInsertDTO;
 import com.schoolproject.shoepingmall.buy.repo.BuyRepository;
+import com.schoolproject.shoepingmall.exception.BuyCountException;
 import com.schoolproject.shoepingmall.exception.WrongIdException;
 import com.schoolproject.shoepingmall.user.repo.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -22,11 +23,17 @@ public class BuyServiceImpl implements BuyService{
     private final UserRepository userRepository;
 
     @Override
-    public Buy insert(BuyInsertDTO buyInsetDTO) {
+    public Buy insert(BuyInsertDTO buyInsertDTO) {
+
+        if(buyInsertDTO.getCount() <= 0) {
+            log.error("수량이 0이하 입니다. {}", buyInsertDTO.getCount());
+
+            throw new BuyCountException(buyInsertDTO.getCount());
+        }
 
         Buy buy = Buy.builder()
-                .count(buyInsetDTO.getCount())
-                .price(buyInsetDTO.getPrice())
+                .count(buyInsertDTO.getCount())
+                .price(buyInsertDTO.getPrice())
                 .build();
 
         return buyRepository.save(buy);

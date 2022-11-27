@@ -1,17 +1,17 @@
 package com.schoolproject.shoepingmall.board;
 
 import com.schoolproject.shoepingmall.item.Item;
+import com.schoolproject.shoepingmall.photo.Photo;
 import com.schoolproject.shoepingmall.user.User;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @Table(name = "board")
 public class Board {
@@ -20,7 +20,7 @@ public class Board {
     @Column(name = "board_id")
     private Long id;
 
-    @Column(length = 15, nullable = false, name = "prize_name")
+    @Column(length = 15, name = "prize_name")
     private String prizeName;
 
     @Column(length = 1000)
@@ -30,8 +30,15 @@ public class Board {
     @JoinColumn(name = "user_id")
     private User user;
 
-    @OneToMany(mappedBy = "board")
+    @OneToMany(mappedBy = "board", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
     private List<Item> items = new ArrayList<>();
+
+    @OneToMany(
+            mappedBy = "board",
+            cascade = {CascadeType.PERSIST, CascadeType.REMOVE},
+            orphanRemoval = true
+    )
+    private List<Photo> photos = new ArrayList<>();
 
     @Builder
     public Board(String prizeName, String content, User user) {
@@ -39,7 +46,7 @@ public class Board {
         this.content = content;
         this.user = user;
         // this(자기 자신을 가리킴.)는 Board
-        user.getBoardList().add(this);
+        user.getBoardList().add(this); // User Entity에서 cascade설정을 하게 되면 생략 가능.
     }
 
     public void modify(String prizeName, String content) {
@@ -47,6 +54,13 @@ public class Board {
         this.content = content;
     }
 
-//    public void add()
+    public void addPhoto(Photo photo) {
+        System.out.println("=================== board add photo");
+        this.photos.add(photo);
+
+        if(photo.getBoard() != this)
+            // 파일 저장
+            photo.setBoard(this);
+    }
 
 }

@@ -23,7 +23,4 @@ public class BoardUpdateDTO {
     @NotBlank
     private String content;
 
-    @NotNull
-    private Long userId;
-
 }

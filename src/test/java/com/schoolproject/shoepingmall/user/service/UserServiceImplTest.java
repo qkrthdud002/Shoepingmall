@@ -27,7 +27,7 @@ class UserServiceImplTest {
     @Rollback(false)
     void 회원가입() {
 
-        UserInsertDTO userInsertDTO = createUserInsertDTO("김서준");
+        UserInsertDTO userInsertDTO = createUserInsertDTO("kim");
         User user = userService.join(userInsertDTO);
 
         assertThat(user.getUsername()).isEqualTo(userInsertDTO.getUsername());

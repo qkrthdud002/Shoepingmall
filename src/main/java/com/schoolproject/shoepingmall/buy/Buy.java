@@ -2,16 +2,15 @@ package com.schoolproject.shoepingmall.buy;
 
 import com.schoolproject.shoepingmall.item.Item;
 import com.schoolproject.shoepingmall.user.User;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
 @Getter
 @Builder
-@AllArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@AllArgsConstructor(access = AccessLevel.PROTECTED)
 public class Buy {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,8 +27,4 @@ public class Buy {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
-
-    public Buy() {
-
-    }
 }

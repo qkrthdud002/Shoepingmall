@@ -1,5 +1,6 @@
 package com.schoolproject.shoepingmall.item.dto;
 
+import com.schoolproject.shoepingmall.board.Board;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -23,6 +24,9 @@ public class ItemInsertDTO {
 
     @NotNull
     private int quantity;
+
+    @NotNull
+    private Long boardId;
 
 
 
