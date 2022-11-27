@@ -1,0 +1,89 @@
+.right {
+    background-color: #F7FAEE;
+    margin-left: 50px;
+    margin-top: 10px;
+    width: 1820px;
+}
+
+.adImg1 {
+    width: 550px;
+    height: 360px;
+    margin-left: 70px;
+}
+
+.adImg2, .adImg3 {
+    width: 550px;
+    height: 360px;
+    margin-left: 10px;
+}
+
+body::-webkit-scrollbar {
+    width: 10px;
+}
+
+body::-webkit-scrollbar-thumb {
+    height: 100px; /* 스크롤바의 길이 */
+    background: #C5DE9C; /* 스크롤바의 색상 */
+    border-radius: 80px;
+}
+
+.shoeBox {
+    margin-top: 10px;
+    margin-left: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1%;
+    width: 98%;
+}
+
+.shoe1 {
+    margin-left: 13px;
+    background-color: #E3EDC9;
+    border-radius: 10px;
+}
+
+.shoe2 {
+    background-color: #E3EDC9;
+    border-radius: 10px;
+}
+
+.shoe3 {
+    background-color: #E3EDC9;
+    border-radius: 10px;
+}
+
+.shoe4 {
+    background-color: #E3EDC9;
+    border-radius: 10px;
+}
+
+.img11 {
+    margin-top: 5px;
+    width: 445px;
+    height: 270px;
+}
+
+.img22 {
+    margin-top: 5px;
+    width: 445px;
+    height: 270px;
+}
+
+.img33 {
+    margin-top: 5px;
+    width: 445px;
+    height: 270px;
+    /* background-color: #e5f0d3; */
+}
+
+p {
+    background-color: rgba(255, 255, 255, 0);
+    font-size: 21px;
+    color: rgb(5, 92, 5);
+    font-weight: 600;
+    margin-left: 35px;
+}
+
+#sports {
+    background-color: #ddf1be;
+}

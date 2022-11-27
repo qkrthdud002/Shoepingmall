@@ -1,0 +1,83 @@
+*{
+    font-size: 14px;
+    background-color: #E0E9C5;
+}
+
+.login{
+    width:1040px;
+    height: 624px;
+    position: absolute;
+    left:50%;
+    top:50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0px 4px 4px 0px #00000040;
+}
+
+.left{
+    position: absolute;
+    width: 50%;
+    height: 100%;
+}
+
+.right{
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    right: 0%;
+    background-color: #fff;
+
+}
+
+.idbox{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    position: absolute;
+    left: 50%;
+    top: 46%;
+    transform: translate(-50%, -50%);
+}
+
+.llogo{
+    background-color: #fff;
+    padding: 40px;
+}
+
+.id{
+    width:280px;
+    height: 30px;
+    padding: 10px;
+    margin-top:20px;
+    background: none;
+    color: #2F6C24;
+    border:none;
+    border-bottom:2px solid #2F6C24;
+}
+
+.id:focus{
+    outline: none;
+}
+
+
+.lbtn{
+    width:290px;
+    height: 50px;
+    margin:20px;
+    border:none;
+    background-color: #2F6C2461;
+}
+
+#logingo{
+    text-decoration: none;
+    background:none;
+    font-size: 18px;
+    color: #fff;
+}
+
+#llink{
+    background-color: #fff;
+    text-decoration: none;
+    color: #2F6C24;
+}
+

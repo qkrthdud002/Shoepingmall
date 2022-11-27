@@ -1,0 +1,121 @@
+.search {
+    margin-left: 1450px;
+}
+
+input.searchText {
+    border-left-width:0;
+    border-right-width:0;
+    border-top-width:0;
+    border-bottom-width:1;
+}
+
+.searchText {
+    font-size: large;
+    color: rgb(5, 92, 5);
+    /* box-sizing: border-box; */
+    /* font-family: 'Arvo'; */
+    font-size: 25px;
+    /* height: 50px; */
+    /* left: 50%; */
+}
+
+.searchText:focus {
+    outline: none;    
+}
+
+.searchImg {
+    margin-top: 5px;
+    width: 40px;
+}
+
+ul {
+    list-style-type: none;
+    margin-left: 35px;
+    margin-right: 35px;
+    padding: 0;
+    overflow: hidden;
+    background-color: #C5DE9C;
+}
+  
+li {
+    float: left;
+}
+  
+li a {
+    display: block;
+    color: rgb(5, 92, 5);
+    font-size: large;
+    font-weight: bold;
+    text-align: center;
+    padding: 14px 108px;
+    text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+    background-color: #ddf1be;
+}
+
+.ad {
+    margin-top: 6px;
+    margin-left: 31px;
+    width: 1848px;
+}
+
+.newPrize {
+    font-size: 27px;
+    color: rgb(5, 92, 5);
+    font-weight: 600;
+    margin-left: 35px;
+}
+
+.newShoe {
+    margin-top: 10px;
+    margin-left: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2%;
+
+    width: 98%;
+}
+
+.img1, .img2, .img3 {
+    border:2px outset rgb(153, 202, 153);
+}
+
+.img1 {
+    margin-top: 5px;
+    width: 550px;
+    height: 370px;
+}
+
+.img2, .newBox2 {
+    margin-top: 5px;
+    width: 550px;
+    height: 370px;
+}
+
+.newbox3, .img3 {
+    margin-top: 5px;
+    width: 550px;
+    height: 370px;
+    /* background-color: #e5f0d3; */
+}
+
+p {
+    background-color: #eef5e4;
+}
+
+.prize {
+    background-color: #e5f0d3;
+}
+
+body::-webkit-scrollbar {
+    width: 10px;
+}
+
+body::-webkit-scrollbar-thumb {
+    height: 100px; /* 스크롤바의 길이 */
+    background: #C5DE9C; /* 스크롤바의 색상 */
+    border-radius: 80px;
+}

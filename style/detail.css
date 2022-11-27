@@ -1,0 +1,106 @@
+/* .detailBtn {
+    margin-top: 10px;
+    margin-left: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2%;
+
+    width: 98%;
+    float: right;
+} */
+
+.bucketBtn {
+    background-color: #f3f0ef;
+    /* outline-color: white; */
+    width: 140px;
+    margin-left: 10px;
+    height: 50px;
+    border-color: white;
+    margin-top: 20px;
+}
+
+.buyBtn {
+    background-color: #f3f0ef;
+    /* outline-color: white; */
+    width: 140px;
+    margin-left: 10px;
+    height: 50px;
+    border-color: white;
+    margin-top: 20px;
+}
+
+.bucketBtn1 {
+    background-color: #f3f0ef;
+    text-decoration-line: none;
+    font-size: medium;
+    color: rgb(5, 92, 5);
+    font-weight: 600;
+}
+
+.buyBtn1 {
+    background-color: #f3f0ef;
+    text-decoration-line: none;
+    font-size: medium;
+    color: rgb(5, 92, 5);
+    font-weight: 600;
+}
+
+.gg {
+    /* margin-left: 300px; */
+    margin-top: 40px;
+    background-color: white;
+    font-size: xx-large;
+    font-weight: 600;
+}
+
+.sneakers1Img {
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    width:1000px;
+    height:1000px;
+}
+
+.like {
+    /* background-color: antiquewhite; */
+    max-width: 50px; 
+    height: auto; 
+    border:1px solid #eaeaea; 
+    padding: 0px; 
+}
+
+.like:checked {
+    background: black;
+}
+
+.likeBtn {
+    display: inline-block;
+    margin-left: 10px;
+    margin-top: 10px;
+    background-color: white;
+}
+
+.ggg {
+    background-color: white;
+    font-size: xx-large;
+    font-weight: 600;
+    margin-left: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2%;
+
+    width: 98%;
+    float: right;
+}
+
+.shoe1 {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2%;
+
+    width: 98%;
+    float: right;
+
+}
+
