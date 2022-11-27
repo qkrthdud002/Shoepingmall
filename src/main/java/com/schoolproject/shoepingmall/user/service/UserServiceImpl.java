@@ -1,5 +1,6 @@
 package com.schoolproject.shoepingmall.user.service;
 
+import com.schoolproject.shoepingmall.authority.Authority;
 import com.schoolproject.shoepingmall.exception.DuplicateNameException;
 import com.schoolproject.shoepingmall.exception.WrongIdException;
 import com.schoolproject.shoepingmall.user.User;
@@ -9,9 +10,11 @@ import com.schoolproject.shoepingmall.user.dto.UserUpdateDTO;
 import com.schoolproject.shoepingmall.user.repo.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Collections;
 import java.util.Optional;
 
 @Service
@@ -21,6 +24,7 @@ import java.util.Optional;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     public User join(UserInsertDTO userInsertDTO) {
@@ -29,9 +33,14 @@ public class UserServiceImpl implements UserService {
             throw new DuplicateNameException(userInsertDTO.getUsername());
         }
 
+        Authority authority = Authority.builder()
+                .authorityName("ROLE_USER")
+                .build();
+
         User user = User.builder()
                 .username(userInsertDTO.getUsername())
-                .password(userInsertDTO.getPassword())
+                .password(passwordEncoder.encode(userInsertDTO.getPassword()))
+                .authorities(Collections.singleton(authority))
                 .build();
         userRepository.save(user);
 

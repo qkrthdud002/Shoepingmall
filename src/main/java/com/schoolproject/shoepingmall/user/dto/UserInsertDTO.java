@@ -15,7 +15,6 @@ public class UserInsertDTO {
     private String username;
 
     @NotBlank
-    @Size(min = 5, max = 20)
     private String password;
 
     @Builder

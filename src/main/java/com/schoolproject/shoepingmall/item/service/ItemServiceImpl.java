@@ -1,5 +1,7 @@
 package com.schoolproject.shoepingmall.item.service;
 
+import com.schoolproject.shoepingmall.board.Board;
+import com.schoolproject.shoepingmall.board.repo.BoardRepository;
 import com.schoolproject.shoepingmall.exception.WrongIdException;
 import com.schoolproject.shoepingmall.item.Item;
 import com.schoolproject.shoepingmall.item.dto.ItemDeleteDTO;
@@ -19,14 +21,18 @@ import org.springframework.transaction.annotation.Transactional;
 public class ItemServiceImpl implements ItemService{
 
     private final ItemRepository itemRepository;
+    private final BoardRepository boardRepository;
 
     @Override
     public Item insert(ItemInsertDTO itemInsertDTO) {
+
+        Board board = this.createBoard(itemInsertDTO.getBoardId());
 
         Item item = Item.builder()
                 .name(itemInsertDTO.getName())
                 .price(itemInsertDTO.getPrice())
                 .size(itemInsertDTO.getSize())
+                .board(board)
                 .build();
 
         return itemRepository.save(item);
@@ -50,4 +56,11 @@ public class ItemServiceImpl implements ItemService{
 
         return item.getId();
     }
+
+    private Board createBoard(Long id) {
+
+        return boardRepository.findById(id).orElseThrow(() -> new WrongIdException("item", id));
+
+    }
+
 }

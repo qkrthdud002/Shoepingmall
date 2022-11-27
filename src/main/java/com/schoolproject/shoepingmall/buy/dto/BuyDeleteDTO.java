@@ -14,10 +14,4 @@ public class BuyDeleteDTO {
     @NotNull
     private Long buyId;
 
-    @NotNull
-    private int count;
-
-    @NotNull
-    private int price;
-
 }
