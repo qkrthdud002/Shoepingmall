@@ -17,6 +17,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.io.IOException;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -32,17 +34,16 @@ class BoardServiceImplTest {
     UserService userService;
 
     @Test
-    void 저장() {
+    void 저장() throws IOException {
 
         User user = createUser("천사");
 
         BoardInsertDTO boardInsertDTO = BoardInsertDTO.builder()
                 .prizeName("aaa")
                 .content("aaaaa")
-                .userId(user.getId())
                 .build();
 
-        Board board = boardService.insert(boardInsertDTO);
+        Board board = boardService.insert(boardInsertDTO, null, null);
 
         assertThat(board.getPrizeName()).isEqualTo(boardInsertDTO.getPrizeName());
 
@@ -63,7 +64,7 @@ class BoardServiceImplTest {
     }
 
     @Test
-    void 수정() {
+    void 수정() throws IOException {
 
         User user = createUser("bbb");
 
@@ -71,11 +72,10 @@ class BoardServiceImplTest {
         BoardUpdateDTO boardUpdateDTO = BoardUpdateDTO.builder()
                 .prizeName("qqq")
                 .content("ccc")
-                .userId(user.getId())
                 .id(board.getId())
                 .build();
 
-        Board modify = boardService.update(boardUpdateDTO);
+        Board modify = boardService.update(null, null);
 
         assertThat(board.getPrizeName()).isEqualTo(boardUpdateDTO.getPrizeName()).isEqualTo(modify.getPrizeName());
 
@@ -83,7 +83,7 @@ class BoardServiceImplTest {
     }
 
     @Test
-    void 삭제() {
+    void 삭제() throws IOException {
 
         User user = createUser("ggg");
         Board board = createBoard(user.getId());
@@ -109,16 +109,14 @@ class BoardServiceImplTest {
 
     }
 
-    private Board createBoard(Long userId) {
+    private Board createBoard(Long userId) throws IOException {
 
         BoardInsertDTO boardInsertDTO = BoardInsertDTO.builder()
                 .prizeName("aaa")
                 .content("aaaaa")
-                .userId(userId)
                 .build();
 
-
-        return boardService.insert(boardInsertDTO);
+        return boardService.insert(boardInsertDTO, null, null);
 
     }
 }

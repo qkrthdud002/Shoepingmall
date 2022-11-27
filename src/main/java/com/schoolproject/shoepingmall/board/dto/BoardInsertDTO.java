@@ -17,14 +17,10 @@ public class BoardInsertDTO {
     @NotBlank
     private String content;
 
-    @NotNull
-    private Long userId;
-
     @Builder
-    public BoardInsertDTO(String prizeName, String content, Long userId) {
+    public BoardInsertDTO(String prizeName, String content) {
         this.prizeName = prizeName;
         this.content = content;
-        this.userId = userId;
     }
 
 }
