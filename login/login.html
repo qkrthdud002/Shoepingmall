@@ -18,12 +18,53 @@
             <img class="llogo" src="../img/logo.png">
             <input class="id"id="id" type="text" placeholder="아이디"/>
             <input class="id" id="pw" type="password" placeholder="비밀번호"/>
-            <button class="lbtn" id="lbtn">로그인</button>
+            <button class="lbtn" id="lbtn">
+                <a href="loginMain.html" class="lbtn1">로그인</a>
+            </button>
             <a id="llink" href="./register.html">회원가입</a>
         </div>
     </div>
 </div>
 
-<script src="./login.js"></script>
 </body>
 </html>
+
+<script>
+    function loginfn() {
+        $.ajax({
+            url: 'http://localhost:8090/api/authenticate',
+            async: true, // false 일 경우 동기 요청으로 변경
+            type: 'post', // POST, GET, PUT
+            data: JSON.stringify({
+                "username": $('#username').val(),
+                "password": $('#password').val(),
+            }),
+            processData: false,
+            dataType: 'text',
+            contentType: 'application/json; charset=utf-8', // text, xml, json, script, html
+            beforeSend: function (res) {}, // 요청하기 전에 호출
+            success: function (res) {
+                console.log('success', res);
+                res = JSON.parse(res);
+                console.log('res', res.token);
+                setCookie('myidtoken', res.token, '60');
+                setCookie('myid', $('#username').val(), '60');
+                console.log(getCookie('myidtoken'));
+                console.log(getCookie('myid'));
+                window.location = 'index.html';
+            }, // 요청 완료 시
+            error: function (res, status) {
+                console.log("error", res.responseText.token);
+            }, // 요청 실패 시
+            complete: function (res) {} // 요청 결과 상관 없이 무조건 호출
+        });
+    }
+    $('#login').on('click', function () {
+        loginfn();
+    });
+    $("#password").keyup(function (e) {
+        if (e.which == 13) {
+            loginfn();
+        }
+    });
+</script>
